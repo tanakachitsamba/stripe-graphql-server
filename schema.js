@@ -9,10 +9,18 @@ const getProducts = () => stripe.products.list({ limit: 100 }, (err, products) =
 //  get product by ID
 const getProduct = id => stripe.products.retrieve(id, (err, product) => product)
 
+// get all skus
+const getSKUs = () => stripe.skus.list({ limit: 100 }, (err, skus) => skus)
+
+// get skus by product id?
+const getSKU = id => stripe.skus.retrieve(id, (err, sku) => sku)
+
 const typeDefs = gql`
     type Query {
         product(id: ID!): Product
         products: [Product!]!
+        skus: [SKU!]!
+        sku(id: ID!): SKU
     }
 
     type Product {
@@ -28,12 +36,18 @@ const typeDefs = gql`
         type: String
         updated: Number
     }
+
+    type SKU {
+        id: ID!
+    }
 `
 
 const resolvers = {
     Query: {
         products: () => getProducts(),
         product: (parent, { id }) => getProduct(id),
+        sku: (parent, { id }) => getSKU(id),
+        skus: () => getSKUs(),
     },
 }
 
