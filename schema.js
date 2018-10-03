@@ -35,10 +35,15 @@ const typeDefs = gql`
         type: String
         created: String
         updated: String
+        attributes: Attributes
     }
 
     type SKU {
         id: ID!
+    }
+
+    type Attributes {
+
     }
 `
 
