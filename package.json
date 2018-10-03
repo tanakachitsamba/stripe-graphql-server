@@ -1,0 +1,13 @@
+{
+    "name": "stripe-graphql-server",
+    "scripts": {
+        "start": "node app"
+    },
+    "dependencies": {
+        "apollo-server-express": "^2.0.1",
+        "axios": "^0.18.0",
+        "express": "^4.16.3",
+        "graphql": "^0.14.2",
+        "stripe": "^6.12.1"
+    }
+}
